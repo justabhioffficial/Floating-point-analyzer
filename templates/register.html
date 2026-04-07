@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Register - FP Analyzer{% endblock %}
+{% block content %}
+<div class="auth-container glass-card slide-up">
+    <h2>Create an Account</h2>
+    <p>Sign up to track your analysis history and generate PDF reports.</p>
+    <form method="POST" action="{{ url_for('register') }}">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required class="glass-input">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required class="glass-input">
+        </div>
+        <button type="submit" class="btn-primary full-width pop-animation">Register Account</button>
+    </form>
+    <p class="auth-switch">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+</div>
+{% endblock %}

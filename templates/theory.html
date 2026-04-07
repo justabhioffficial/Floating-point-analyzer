@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Theory - FP Analyzer{% endblock %}
+{% block content %}
+<div class="content-container glass-card fade-in">
+    <h2 class="gradient-text">Floating Point Theory</h2>
+    <p>Floating-point arithmetic is the most pervasive means of approximating real-world continuity on discrete digital hardware.</p>
+
+    <h3>Why do Errors Occur?</h3>
+    <p>Computers represent numbers using fixed binary formats (like IEEE 754). Not all decimal numbers can be perfectly mapped to a binary representation, introducing tiny approximations on nearly every calculation step.</p>
+    
+    <h3>Rounding vs Truncation</h3>
+    <ul>
+        <li><strong class="neon-text">Rounding:</strong> Selecting the nearest representable number to the true mathematical value. This minimizes immediate variance.</li>
+        <li><strong class="neon-text">Truncation:</strong> Indiscriminately dropping precision beyond a certain point. This consistently forces magnitude towards zero in absolute terms, creating bias.</li>
+    </ul>
+    
+    <h3>Error Metrics</h3>
+    <p><strong>Absolute Error:</strong> The bare mathematical variance between truth and approximation: <code>|exact - approx|</code>.</p>
+    <p><strong>Relative Error:</strong> Absolute variance scaled to the magnitude of the truth: <code>|exact - approx| / |exact|</code>. This dictates "percentage incorrect".</p>
+</div>
+{% endblock %}

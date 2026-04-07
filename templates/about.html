@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}About - FP Analyzer{% endblock %}
+{% block content %}
+<div class="content-container glass-card fade-in">
+    <h2 class="gradient-text">About The Project</h2>
+    <p>The Floating Point Error Analyzer is a production-grade demonstration of numerical engineering problems, built with a Flask Python backend and Vanilla JavaScript frontend.</p>
+    
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>Analysis Engine</h3>
+            <p>Built with NumPy, providing robust safety when executing mathematical equations into numerical operations.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Dynamic Visualizations</h3>
+            <p>Utilizes Chart.js to map rounding and truncation error disparities interactively across arbitrary precision domains.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Diagnostic Explanations</h3>
+            <p>Generates descriptive diagnostic explanations indicating why certain numerical phenomena happen under certain operations.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Reporting Engine</h3>
+            <p>Exports metric histories directly to downloadable PDF archives utilizing the robust ReportLab package.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Home - FP Analyzer{% endblock %}
+{% block content %}
+<div class="hero-section glass-card fade-in">
+    <h1 class="gradient-text">Master Floating Point Precision</h1>
+    <p class="subtitle">Understand errors, truncation, and rounding in computational mathematics. See exactly where and how numerical errors occur dynamically over varied precision levels.</p>
+    
+    <div class="hero-buttons">
+        {% if session.get('user_id') %}
+            <a href="{{ url_for('analyzer') }}" class="btn-large bounce-hover">Launch Analyzer</a>
+        {% else %}
+            <a href="{{ url_for('register') }}" class="btn-large bounce-hover">Get Started Free</a>
+        {% endif %}
+        <a href="{{ url_for('theory') }}" class="btn-large btn-outline slide-hover">Learn the Theory</a>
+    </div>
+</div>
+{% endblock %}

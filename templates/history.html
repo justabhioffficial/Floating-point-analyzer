@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}History - FP Analyzer{% endblock %}
+{% block content %}
+<div class="history-container glass-card slide-up">
+    <div class="history-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h2>Your Analysis History</h2>
+        <a href="{{ url_for('download_history') }}" class="btn-primary pop-animation" style="text-decoration: none;">💾 Download as PDF</a>
+    </div>
+    
+    <div class="table-wrapper" style="overflow-x: auto;">
+        <table class="glass-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr>
+                    <th style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Expression</th>
+                    <th style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Method</th>
+                    <th style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Precision</th>
+                    <th style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Exact Value</th>
+                    <th style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Approx Value</th>
+                    <th style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Absolute Error</th>
+                    <th style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in history %}
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.03)'" onmouseout="this.style.backgroundColor='transparent'">
+                    <td style="padding: 1rem;"><code>{{ log.expression }}</code></td>
+                    <td style="padding: 1rem;">{{ log.method }}</td>
+                    <td style="padding: 1rem;">{{ log.precision }}</td>
+                    <td style="padding: 1rem;">{{ "%.6f"|format(log.exact_value) }}</td>
+                    <td style="padding: 1rem;">{{ "%.6f"|format(log.approx_value) }}</td>
+                    <td style="padding: 1rem;" class="error-text">{{ "%.2e"|format(log.abs_error) }}</td>
+                    <td style="padding: 1rem; color: #a1a1aa; font-size: 0.9em;">{{ log.timestamp }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7" style="padding: 2rem; text-align: center; color: #a1a1aa;">No history available yet. Run an analysis first!</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
